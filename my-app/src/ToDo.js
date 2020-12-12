@@ -5,7 +5,7 @@ function ToDo(props) {
   return (
     <List>
       <ListItem>
-        <ListItemText primary={props.text} secondary="ToDo.."/>
+        <ListItemText primary={props.text} secondary="ToDo.." />
       </ListItem>
     </List>
   );

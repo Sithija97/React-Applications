@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Button,FormControl,InputLabel ,Input } from '@material-ui/core';
 import ToDo from "./ToDo";
+import db from "./firebase";
 
 function App() {
-  const [todos, setTodos] = useState([
-    "Work with React + Firebase",
-    "Work with Angular + Node & Mongo",
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const [input, setInput] = useState("");
+
+  // works similar to OnInit
+  useEffect(() => {
+    db.collection('todos').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(
+        doc => doc.data().todo
+      ))
+    })
+  },[])
 
   const addToDo = (event) => {
     // prevent refreshing the page
@@ -20,7 +27,7 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Hello Sithija 🚀</h1>
+      <h1>Hello Team Alpha 🐺 </h1>
 
       <form>
         <FormControl>
