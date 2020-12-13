@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Button,FormControl,InputLabel ,Input } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input } from "@material-ui/core";
 import ToDo from "./ToDo";
 import db from "./firebase";
+import firebase from "firebase";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -11,17 +12,19 @@ function App() {
 
   // works similar to OnInit
   useEffect(() => {
-    db.collection('todos').onSnapshot(snapshot => {
-      setTodos(snapshot.docs.map(
-        doc => doc.data().todo
-      ))
-    })
-  },[])
+    db.collection("todos").orderBy('timestamp','desc').onSnapshot((snapshot) => {
+      setTodos(snapshot.docs.map((doc) => doc.data().todo));
+    });
+  }, []);
 
   const addToDo = (event) => {
     // prevent refreshing the page
     event.preventDefault();
     setTodos([...todos, input]);
+    db.collection("todos").add({
+      todo: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
     // clear the input field empty
     setInput("");
   };
@@ -51,7 +54,7 @@ function App() {
 
       <ul>
         {todos.map((todo) => (
-          <ToDo text={todo}/>
+          <ToDo text={todo} />
         ))}
       </ul>
     </div>
