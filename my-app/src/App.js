@@ -7,13 +7,12 @@ import firebase from "firebase";
 
 function App() {
   const [todos, setTodos] = useState([]);
-
   const [input, setInput] = useState("");
 
   // works similar to OnInit
   useEffect(() => {
     db.collection("todos").orderBy('timestamp','desc').onSnapshot((snapshot) => {
-      setTodos(snapshot.docs.map((doc) => doc.data().todo));
+      setTodos(snapshot.docs.map((doc) => ({id: doc.id,todo: doc.data().todo})));
     });
   }, []);
 
@@ -34,7 +33,7 @@ function App() {
 
       <form>
         <FormControl>
-          <InputLabel>✅ Write a ToDo</InputLabel>
+          <InputLabel>✅ Write a To Do</InputLabel>
           <Input
             value={input}
             onChange={(event) => setInput(event.target.value)}
@@ -54,7 +53,7 @@ function App() {
 
       <ul>
         {todos.map((todo) => (
-          <ToDo text={todo} />
+          <ToDo todo={todo} />
         ))}
       </ul>
     </div>

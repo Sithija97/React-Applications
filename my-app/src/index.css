@@ -1,4 +1,5 @@
 body {
+  align-items: center;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiCard-root {
+  width: 600px;
+}
+
+/* .MuiListItem-gutters {
+  padding-left: 300px !important;
+} */
+
+ /* {
+  margin-left: 483px !important;
+  background-color: turquoise !important;
+}  */
