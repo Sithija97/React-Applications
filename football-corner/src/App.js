@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useEffect } from "react";
 import './App.css';
+import Axios from "axios";
+import { useState } from 'react';
 
 function App() {
+  useEffect(() => {
+    getInfo()
+  })
+
+  const [leagues, setLeagues] = useState([])
+  const getInfo = async ()=>{
+    const response = await Axios.get(`https://www.thesportsdb.com/api/v1/json/1/all_leagues.php`);
+    await console.log(response)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Leagues</h2>
     </div>
   );
 }
