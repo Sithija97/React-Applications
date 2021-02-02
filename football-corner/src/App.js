@@ -1,22 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 import Axios from "axios";
-import { useState } from 'react';
+
+//importing components
+import Root from "./components/Root";
 
 function App() {
-  useEffect(() => {
-    getInfo()
-  })
-
-  const [leagues, setLeagues] = useState([])
-  const getInfo = async ()=>{
-    const response = await Axios.get(`https://www.thesportsdb.com/api/v1/json/1/all_leagues.php`);
-    await console.log(response)
-  }
-
   return (
     <div>
-      <h2>Leagues</h2>
+      <Root/>
     </div>
   );
 }
