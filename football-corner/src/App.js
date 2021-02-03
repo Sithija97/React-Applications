@@ -5,13 +5,11 @@ import Axios from "axios";
 
 //importing components
 import Root from "./components/Body/Root";
+import img from './components/images/img.png'
 
 function App() {
   return (
-    <div className='App'>
-      <Container maxWidth='100%'  style={{background:'#03a9f4', height:'100vh'}}>Sithija</Container>
-      <Container maxWidth='100%'  style={{background:'white', height:'100vh'}}>Sithija</Container>
-      <Container maxWidth='100%'  style={{height:'100vh'}}>Sithija</Container>
+    <div>
     </div>
   );
 }
