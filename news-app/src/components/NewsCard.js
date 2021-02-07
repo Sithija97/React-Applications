@@ -1,14 +1,16 @@
 import React from 'react'
+import './customStyles.css'
 
-const NewsCard = () => {
+const NewsCard = (props) => {
     return (
-        <div class="col-sm">
-          <div class="card" style={{ width: '18rem', margin:'10px' }}>
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div className="col-sm">
+            <div className="card" style={{ width: '20rem', margin: '10px' }}>
+                <img src={props.image} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <h6 className="card-text">{props.title}</h6>
+                    <p className="card-text">{props.description}</p>
+                </div>
             </div>
-          </div>
         </div>
     )
 }
