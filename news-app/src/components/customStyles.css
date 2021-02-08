@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@800&display=swap');
+
 #root {
     position: relative;
     right: -3rem;
+}
+
+.title {
+    position: relative;
+    top: 14rem;
+    font-size: 90px;
+    font-family: Karla;
+}
+
+.img {
+    height: 30rem;
 }
