@@ -14,7 +14,7 @@ function App() {
   }, [])
 
   const getNews = async () => {
-    const data = await axios.get(`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${APP_KEY}`)
+    const data = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${APP_KEY}`)
     console.log(data.data.articles)
     setArticles(data.data.articles)
   }
