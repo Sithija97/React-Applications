@@ -5,6 +5,12 @@ import GoogleButton from "react-google-button";
 import Home from './Home';
 
 const Login = () => {
+  const initiaStateValues = {
+    islogIn: false,
+    name: "",
+  };
+
+  const [state, setState] = useState(initiaStateValues);
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(providerGoogle)
@@ -18,6 +24,10 @@ const Login = () => {
         var user = result.user;
         // display user
         //console.log("user", user);
+        setState({
+          islogIn : true,
+          name: user.displayName
+        })
       })
       .catch((error) => {
         // Handle Errors here.
@@ -43,6 +53,10 @@ const Login = () => {
         var accessToken = credential.accessToken;
         // display user
         //console.log("user", user);
+        setState({
+          islogIn: true,
+          name: user.displayName,
+        });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -69,6 +83,10 @@ const Login = () => {
         var user = result.user;
         // display user
         //console.log("user", user);
+        setState({
+          islogIn: true,
+          name: user.displayName,
+        });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -82,13 +100,6 @@ const Login = () => {
       });
   };
 
-  const initiaStateValues = {
-    islogIn: false,
-    name : ''
-  }
-
-  const [state, setState] = useState(initiaStateValues)
-
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       if (user) {
@@ -99,14 +110,14 @@ const Login = () => {
         //setting the state
         setState({
           islogIn: true,
-          name : user.displayName
+          name : auth.currentUser.displayName
         })
 
         //get the current user
         // var user = firebase.auth().currentUser;
       } else {
         // No user is signed in.
-        console.log("user signed in");
+        console.log(" No user is signed in ");
       }
     });
   }, [auth])
@@ -119,7 +130,7 @@ const Login = () => {
             <button onClick={signInWithGithub}>Sign in with Github</button>
           </div>
         ) : (
-            <Home/>
+            <Home name={ state.name }/>
         )}
 
         {/* <div>
