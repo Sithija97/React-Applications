@@ -4,13 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./StateContext";
-import { BrowserRouter as Router, Switch, Route, BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <BrowserRouter>
-        {/* <App /> */} <Route path='/' component={ App }/>
+        {/* <App /> */} <Route path="/" component={App} />
       </BrowserRouter>
     </UserProvider>
   </React.StrictMode>,

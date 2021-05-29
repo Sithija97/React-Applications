@@ -1,14 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { auth, providerGoogle, providerFacebook, providerGithub } from '../firebase'
+import React, { useState, useEffect, useContext } from "react";
+import {
+  auth,
+  providerGoogle,
+  providerFacebook,
+  providerGithub,
+} from "../firebase";
 import GoogleButton from "react-google-button";
 import { UserContext } from "../StateContext";
 import { useHistory } from "react-router-dom";
 import "../App.css";
 
 const Login = () => {
-
   const [user, setUser] = useContext(UserContext);
-  const history = useHistory()
+  const history = useHistory();
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(providerGoogle)
@@ -27,7 +31,7 @@ const Login = () => {
           email: user.email,
           isLogin: true,
         });
-        history.push('/home')
+        history.push("/home");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -52,7 +56,6 @@ const Login = () => {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         var accessToken = credential.accessToken;
         // display user
-
       })
       .catch((error) => {
         // Handle Errors here.
@@ -78,7 +81,6 @@ const Login = () => {
         // The signed-in user info.
         var user = result.user;
         // display user
-
       })
       .catch((error) => {
         // Handle Errors here.
@@ -92,30 +94,15 @@ const Login = () => {
       });
   };
 
-  // useEffect(() => {
-  //   // auth.onAuthStateChanged(function (user) {
-  //   //   if (user) {
-  //   //     // User is signed in.
-  //   //     console.log("user signed in");
-  //   //     //console.log("user", user);
+  return (
+    <div className="App">
+      <div>
+        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <button onClick={signInWithFacebook}>Sign in with Facebook</button>
+        <button onClick={signInWithGithub}>Sign in with Github</button>
+      </div>
 
-  //   //     //get the current user
-  //   //     // var user = firebase.auth().currentUser;
-  //   //   } else {
-  //   //     // No user is signed in.
-  //   //     console.log(" No user is signed in ");
-  //   //   }
-  //   // });
-  // }, [auth, user])
-    return (
-      <div className="App">
-          <div>
-            <button onClick={signInWithGoogle}>Sign in with Google</button>
-            <button onClick={signInWithFacebook}>Sign in with Facebook</button>
-            <button onClick={signInWithGithub}>Sign in with Github</button>
-          </div>
-
-        {/* <div>
+      {/* <div>
           <GoogleButton onClick={signInWithGoogle} />
         </div>
         <div
@@ -128,8 +115,8 @@ const Login = () => {
           data-use-continue-as="false"
           onClick={signInWithFacebook}
         ></div> */}
-      </div>
-    );
-}
+    </div>
+  );
+};
 
-export default Login
+export default Login;
