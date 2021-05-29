@@ -2,18 +2,13 @@ import React, { useState, useEffect } from 'react'
 import '../App.css'
 import { auth, providerGoogle, providerFacebook, providerGithub } from '../firebase'
 import GoogleButton from "react-google-button";
-import Home from './Home';
 
 const Login = () => {
-  const initiaStateValues = {
-    islogIn: false,
-    name: "",
-  };
 
-  const [state, setState] = useState(initiaStateValues);
   const signInWithGoogle = () => {
     auth
-      .signInWithPopup(providerGoogle)
+      // .signInWithPopup(providerGoogle)
+      .signInWithRedirect(providerGoogle)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -24,10 +19,6 @@ const Login = () => {
         var user = result.user;
         // display user
         //console.log("user", user);
-        setState({
-          islogIn : true,
-          name: user.displayName
-        })
       })
       .catch((error) => {
         // Handle Errors here.
@@ -42,7 +33,7 @@ const Login = () => {
 
   const signInWithFacebook = () => {
     auth
-      .signInWithPopup(providerFacebook)
+      .signInWithRedirect(providerFacebook)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -53,10 +44,6 @@ const Login = () => {
         var accessToken = credential.accessToken;
         // display user
         //console.log("user", user);
-        setState({
-          islogIn: true,
-          name: user.displayName,
-        });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -72,7 +59,7 @@ const Login = () => {
 
   const signInWithGithub = () => {
     auth
-      .signInWithPopup(providerGithub)
+      .signInWithRedirect(providerGithub)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -83,10 +70,6 @@ const Login = () => {
         var user = result.user;
         // display user
         //console.log("user", user);
-        setState({
-          islogIn: true,
-          name: user.displayName,
-        });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -100,38 +83,13 @@ const Login = () => {
       });
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        console.log("user signed in");
-        //console.log("user", user);
-
-        //setting the state
-        setState({
-          islogIn: true,
-          name : auth.currentUser.displayName
-        })
-
-        //get the current user
-        // var user = firebase.auth().currentUser;
-      } else {
-        // No user is signed in.
-        console.log(" No user is signed in ");
-      }
-    });
-  }, [auth])
     return (
       <div className="App">
-        {state.islogIn === false ? (
           <div>
             <button onClick={signInWithGoogle}>Sign in with Google</button>
             <button onClick={signInWithFacebook}>Sign in with Facebook</button>
             <button onClick={signInWithGithub}>Sign in with Github</button>
           </div>
-        ) : (
-            <Home name={ state.name }/>
-        )}
 
         {/* <div>
           <GoogleButton onClick={signInWithGoogle} />
