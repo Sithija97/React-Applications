@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { auth } from "../firebase";
 
-function Home() {
-  var user;
-  useEffect(() => {
-    user = auth.currentUser;
-    console.log(user)
-  }, [auth])
+function Home({ name }) {
+  // var user;
+  // useEffect(() => {
+  //   user = auth.currentUser;
+  //   console.log(user)
+  // }, [auth])
   const signOut = () => {
     auth
       .signOut()
@@ -22,7 +22,7 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
-      <h3>Hi</h3>
+      <h3>Hi { name }</h3>
       <button onClick={signOut}>log out</button>
     </div>
   );
