@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import '../App.css'
+import React, { useState, useEffect, useContext } from 'react'
 import { auth, providerGoogle, providerFacebook, providerGithub } from '../firebase'
 import GoogleButton from "react-google-button";
-import Home from './Home';
+import { UserContext } from "../StateContext";
+import { useHistory } from "react-router-dom";
+import "../App.css";
 
 const Login = () => {
-  const initiaStateValues = {
-    islogIn: false,
-    name: "",
-  };
 
-  const [state, setState] = useState(initiaStateValues);
+  const [user, setUser] = useContext(UserContext);
+  const history = useHistory()
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(providerGoogle)
@@ -23,11 +21,13 @@ const Login = () => {
         // The signed-in user info.
         var user = result.user;
         // display user
-        //console.log("user", user);
-        setState({
-          islogIn : true,
-          name: user.displayName
-        })
+        setUser({
+          id: user.uid,
+          name: user.displayName,
+          email: user.email,
+          isLogin: true,
+        });
+        history.push('/home')
       })
       .catch((error) => {
         // Handle Errors here.
@@ -52,11 +52,7 @@ const Login = () => {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         var accessToken = credential.accessToken;
         // display user
-        //console.log("user", user);
-        setState({
-          islogIn: true,
-          name: user.displayName,
-        });
+
       })
       .catch((error) => {
         // Handle Errors here.
@@ -82,11 +78,7 @@ const Login = () => {
         // The signed-in user info.
         var user = result.user;
         // display user
-        //console.log("user", user);
-        setState({
-          islogIn: true,
-          name: user.displayName,
-        });
+
       })
       .catch((error) => {
         // Handle Errors here.
@@ -100,38 +92,28 @@ const Login = () => {
       });
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        console.log("user signed in");
-        //console.log("user", user);
+  // useEffect(() => {
+  //   // auth.onAuthStateChanged(function (user) {
+  //   //   if (user) {
+  //   //     // User is signed in.
+  //   //     console.log("user signed in");
+  //   //     //console.log("user", user);
 
-        //setting the state
-        setState({
-          islogIn: true,
-          name : auth.currentUser.displayName
-        })
-
-        //get the current user
-        // var user = firebase.auth().currentUser;
-      } else {
-        // No user is signed in.
-        console.log(" No user is signed in ");
-      }
-    });
-  }, [auth])
+  //   //     //get the current user
+  //   //     // var user = firebase.auth().currentUser;
+  //   //   } else {
+  //   //     // No user is signed in.
+  //   //     console.log(" No user is signed in ");
+  //   //   }
+  //   // });
+  // }, [auth, user])
     return (
       <div className="App">
-        {state.islogIn === false ? (
           <div>
             <button onClick={signInWithGoogle}>Sign in with Google</button>
             <button onClick={signInWithFacebook}>Sign in with Facebook</button>
             <button onClick={signInWithGithub}>Sign in with Github</button>
           </div>
-        ) : (
-            <Home name={ state.name }/>
-        )}
 
         {/* <div>
           <GoogleButton onClick={signInWithGoogle} />

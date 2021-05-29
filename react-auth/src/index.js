@@ -3,10 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { UserProvider } from "./StateContext";
+import { BrowserRouter as Router, Switch, Route, BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-      <App />
+    <UserProvider>
+      <BrowserRouter>
+        {/* <App /> */} <Route path='/' component={ App }/>
+      </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

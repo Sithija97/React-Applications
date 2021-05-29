@@ -2,11 +2,6 @@ import React, { useEffect } from "react";
 import { auth } from "../firebase";
 
 function Home({ name }) {
-  // var user;
-  // useEffect(() => {
-  //   user = auth.currentUser;
-  //   console.log(user)
-  // }, [auth])
   const signOut = () => {
     auth
       .signOut()
