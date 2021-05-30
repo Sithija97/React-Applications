@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { auth } from "../firebase";
 import { UserContext } from "../StateContext";
 import { useHistory } from "react-router-dom";
@@ -6,20 +6,15 @@ import { useHistory } from "react-router-dom";
 const Home = () => {
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
-  console.log("user inside home : ", user.displayName);
+
   const signOut = () => {
     auth
       .signOut()
       .then(() => {
+        setUser(null);
         // Sign-out successful.
-        setUser({
-          id: "",
-          name: "",
-          email: "",
-          isLogin: false,
-        });
-        history.push("/");
-        console.log("Sign-out successful.");
+        history.push("/login");
+        console.log("Sign-out successful.");    
       })
       .catch((error) => {
         // An error happened.
@@ -29,7 +24,7 @@ const Home = () => {
   return (
     <div>
       <h2>Home</h2>
-      <h3>Hi {user.displayName} </h3>
+      <h3>Hi {user === null ? ' ': user.displayName} </h3>
       <button onClick={signOut}>log out</button>
     </div>
   );

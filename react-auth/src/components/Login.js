@@ -25,12 +25,7 @@ const Login = () => {
         // The signed-in user info.
         var user = result.user;
         // display user
-        setUser({
-          id: user.uid,
-          name: user.displayName,
-          email: user.email,
-          isLogin: true,
-        });
+        setUser(user);
         history.push("/home");
       })
       .catch((error) => {
