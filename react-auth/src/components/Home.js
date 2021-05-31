@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { auth } from "../firebase";
+import { UserContext } from "../StateContext";
+import { useHistory } from "react-router-dom";
 
-function Home({ name }) {
-  // var user;
-  // useEffect(() => {
-  //   user = auth.currentUser;
-  //   console.log(user)
-  // }, [auth])
+const Home = () => {
+  const [user, setUser] = useContext(UserContext);
+  const history = useHistory();
+
   const signOut = () => {
     auth
       .signOut()
-        .then(() => {
+      .then(() => {
+        setUser(null);
         // Sign-out successful.
-        console.log("Sign-out successful.");
+        history.push("/login");
+        console.log("Sign-out successful.");    
       })
       .catch((error) => {
         // An error happened.
@@ -22,7 +24,7 @@ function Home({ name }) {
   return (
     <div>
       <h2>Home</h2>
-      <h3>Hi { name }</h3>
+      <h3>Hi {user === null ? ' ': user.displayName} </h3>
       <button onClick={signOut}>log out</button>
     </div>
   );
