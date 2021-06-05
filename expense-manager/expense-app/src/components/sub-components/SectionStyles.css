@@ -35,6 +35,10 @@
     height: 25vh;      
 }
 
+.section_three_profile_card >h4 {
+    margin-left: 15px;
+}
+
 .section_one_overview_card {
     height: 25vh; 
 }
@@ -45,4 +49,20 @@
 
 .section_one_table_card {
     height: 59vh;
+}
+
+.prfile_content {
+    margin-top: -8vh;
+}
+
+.profile_picture {
+    border-radius: 50%; 
+    border: 5px solid #D980FA;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.profile_name {
+    text-align: center;
 }
