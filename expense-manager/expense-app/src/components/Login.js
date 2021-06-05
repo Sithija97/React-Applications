@@ -4,8 +4,9 @@ import { auth, providerGoogle } from "../firebase";
 import { UserContext } from "../StateContext";
 
 function Login() {
-    const [user, setUser] = useContext(UserContext);
-    const history = useHistory();
+  const [user, setUser] = useContext(UserContext);
+  const history = useHistory();
+  
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(providerGoogle)

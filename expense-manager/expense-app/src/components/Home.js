@@ -1,7 +1,11 @@
+import './Home.css'
 import React, { useContext, useEffect } from "react";
 import { auth } from "../firebase";
 import { UserContext } from "../StateContext";
 import { useHistory } from "react-router-dom";
+import SectionOne from './sub-components/SectionOne';
+import SectionTwo from './sub-components/SectionTwo';
+import SectionThree from './sub-components/SectionThree';
 
 function Home () {
   const [user, setUser] = useContext(UserContext);
@@ -22,10 +26,14 @@ function Home () {
       });
   };
   return (
-    <div>
-      <h2>Home</h2>
+    <div className='app'>
+      {/* <h2>Home</h2> */}
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree/>
+      {/* <img src={user === null ? " " : user.photoURL} alt="" />
       <h3>Hi {user === null ? " " : user.displayName} </h3>
-      <button onClick={signOut}>log out</button>
+      <button onClick={signOut}>log out</button> */}
     </div>
   );
 };

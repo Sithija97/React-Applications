@@ -1,4 +1,3 @@
-import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import { useContext, useEffect } from "react";
@@ -16,7 +15,6 @@ function App() {
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
   useEffect(() => {
-    console.log("in app.js user: ", user);
     auth.onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
