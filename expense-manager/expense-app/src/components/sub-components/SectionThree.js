@@ -2,11 +2,29 @@ import React, { useContext } from "react";
 import "./SectionStyles.css";
 import { Avatar, Card, CardContent } from "@material-ui/core";
 import { UserContext } from "../../StateContext";
+import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import { useHistory } from "react-router-dom";
 import "./Form.css";
 import Form from "./Form";
+import { auth } from "../../firebase";
+
 function SectionThree() {
-  const [user, sertUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
+  const history = useHistory();
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        setUser(null);
+        // Sign-out successful.
+        history.push("/login");
+        console.log("Sign-out successful.");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(" An error happened.", error);
+      });
+  };
   return (
     <div className="section_three">
       <Card className="section_three_profile_card">
@@ -22,6 +40,10 @@ function SectionThree() {
             <br></br>
             {user === null ? " " : user.email}
           </div>
+          <ExitToAppRoundedIcon
+            className="logout_button"
+            onClick={signOut}
+          ></ExitToAppRoundedIcon>
         </CardContent>
       </Card>
       <br></br>

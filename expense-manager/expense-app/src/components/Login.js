@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, providerGoogle } from "../firebase";
 import { UserContext } from "../StateContext";
+import './Login.css'
 
 function Login() {
   const [user, setUser] = useContext(UserContext);
@@ -34,12 +35,36 @@ function Login() {
       });
   };
   return (
-    <div>
-      <button onClick={signInWithGoogle}>
-        <p>
-          <b>Sign in with Google</b>
-        </p>
-      </button>
+    <div className="login_container">
+      <img
+        className="login_img"
+        src="https://image.freepik.com/free-vector/family-budget-planning-abstract-concept-vector-illustration-best-economic-decisions-personal-budget-strategy-family-income-expenses-management-financial-household-plan-abstract-metaphor_335657-4162.jpg"
+        alt=""
+      />
+      <div className="login">
+        <div className="login__divider"></div>
+        <div className="login__loginwith">
+          <span>login with facebook</span>
+          <img
+            src="https://image.flaticon.com/icons/png/512/145/145802.png"
+            alt="facebook_icon"
+          />
+        </div>
+        <div className="login__loginwith" onClick={signInWithGoogle}>
+          <span>login with google</span>
+          <img
+            src="https://image.flaticon.com/icons/png/512/281/281764.png"
+            alt="google_icon"
+          />
+        </div>
+        <div className="login__loginwith">
+          <span>login with github</span>
+          <img
+            src="https://cdn1.iconfinder.com/data/icons/logotypes/32/github-512.png"
+            alt="github_icon"
+          />
+        </div>
+      </div>
     </div>
   );
 }

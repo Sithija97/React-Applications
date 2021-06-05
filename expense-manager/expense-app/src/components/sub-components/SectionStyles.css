@@ -1,6 +1,6 @@
 /* basic styles */
 .MuiPaper-root {
-    border-radius: 20px !important;
+  border-radius: 20px !important;
 }
 
 .section_one {
@@ -32,41 +32,49 @@
 }
 
 .section_three_profile_card {
-    height: 35vh;      
+  height: 35vh;
 }
 
 h4 {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
 .form_title {
-    margin-bottom: -0.5vh;
+  margin-bottom: -0.5vh;
 }
 
 .section_one_overview_card {
-    height: 25vh; 
+  height: 25vh;
 }
 
 .section_three_form_card {
-    height: 49vh;
+  height: 49vh;
 }
 
 .section_one_table_card {
-    height: 59vh;
+  height: 59vh;
 }
 
 .prfile_content {
-    margin-top: -8vh;
+  margin-top: -8vh;
 }
 
 .profile_picture {
-    border-radius: 50%; 
-    border: 5px solid #D980FA;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
+  border-radius: 50%;
+  border: 5px solid #b0afb1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile_name {
-    text-align: center;
+  text-align: center !important;
+}
+
+.logout_button {
+  display: block !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em !important;
+  color: blueviolet;
 }
