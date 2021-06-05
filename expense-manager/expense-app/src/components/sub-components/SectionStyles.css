@@ -32,11 +32,15 @@
 }
 
 .section_three_profile_card {
-    height: 25vh;      
+    height: 35vh;      
 }
 
-.section_three_profile_card >h4 {
+h4 {
     margin-left: 15px;
+}
+
+.form_title {
+    margin-bottom: -0.5vh;
 }
 
 .section_one_overview_card {
@@ -44,7 +48,7 @@
 }
 
 .section_three_form_card {
-    height: 59vh;
+    height: 49vh;
 }
 
 .section_one_table_card {

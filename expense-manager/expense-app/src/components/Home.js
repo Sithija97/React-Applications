@@ -21,11 +21,14 @@ function Home () {
   //     });
   // };
   return (
-    <div className='app'>
-      {/* <h2>Home</h2> */}
-      <SectionOne />
-      <SectionTwo />
-      <SectionThree/>
+    <div className="App">
+      {/* <button>-</button> */}
+      <div className="app">
+        {/* <h2>Home</h2> */}
+        <SectionOne />
+        <SectionTwo />
+        <SectionThree />
+      </div>
     </div>
   );
 };

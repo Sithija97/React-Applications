@@ -1,12 +1,14 @@
-.app {
-  display: flex;
-  background: rgb(144, 39, 254);
+.App {
+   background: rgb(144, 39, 254);
   background: linear-gradient(
     90deg,
     rgba(144, 39, 254, 1) 31%,
     rgba(144, 39, 254, 1) 39%,
     rgba(239, 186, 211, 1) 84%
   );
+}
+.app {
+  display: flex;
   height: 91.5vh;
   /* height: 100%; */
   max-width: 100%;

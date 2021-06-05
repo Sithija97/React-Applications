@@ -3,7 +3,8 @@ import "./SectionStyles.css";
 import { Avatar, Card, CardContent } from "@material-ui/core";
 import { UserContext } from "../../StateContext";
 import { useHistory } from "react-router-dom";
-
+import "./Form.css";
+import Form from "./Form";
 function SectionThree() {
   const [user, sertUser] = useContext(UserContext);
   return (
@@ -25,7 +26,10 @@ function SectionThree() {
       </Card>
       <br></br>
       <Card className="section_three_form_card">
-        <CardContent></CardContent>
+        <h4 className="form_title">Add Data</h4>
+        <CardContent>
+          <Form />
+        </CardContent>
       </Card>
     </div>
   );

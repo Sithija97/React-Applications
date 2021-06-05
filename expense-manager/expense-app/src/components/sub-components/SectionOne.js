@@ -1,19 +1,23 @@
 import React from "react";
 import "./SectionStyles.css";
 import { Card, CardContent } from "@material-ui/core";
+import Overview from "./Overview";
+import Transactions from "./Transactions";
 
 function SectionOne() {
   return (
     <div className="section_one">
       <Card className="section_one_overview_card">
+        <h4>Overview</h4>
         <CardContent>
-          <p>sec 1</p>
+          <Overview />
         </CardContent>
       </Card>
       <br></br>
       <Card className="section_one_table_card">
+        <h4>Past Transactions</h4>
         <CardContent>
-          <p>sec 1</p>
+          <Transactions/>
         </CardContent>
       </Card>
     </div>
