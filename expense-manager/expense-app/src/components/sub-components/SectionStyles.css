@@ -32,7 +32,7 @@
 }
 
 .section_three_profile_card {
-  height: 35vh;
+  height: 30vh;
 }
 
 h4 {
@@ -48,7 +48,7 @@ h4 {
 }
 
 .section_three_form_card {
-  height: 49vh;
+  height: 54vh;
 }
 
 .section_one_table_card {
@@ -60,6 +60,7 @@ h4 {
 }
 
 .profile_picture {
+  height: 5.5em;
   border-radius: 50%;
   border: 5px solid #b0afb1;
   display: block;
@@ -69,6 +70,7 @@ h4 {
 
 .profile_name {
   text-align: center !important;
+  margin-top: 8px;
 }
 
 .logout_button {
@@ -76,5 +78,6 @@ h4 {
   margin-left: auto;
   margin-right: auto;
   font-size: 2em !important;
+  font-weight: bold !important;
   color: blueviolet;
 }

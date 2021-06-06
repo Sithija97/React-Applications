@@ -50,7 +50,7 @@ function SectionThree() {
       <Card className="section_three_form_card">
         <h4 className="form_title">Add Data</h4>
         <CardContent>
-          <Form />
+          <Form id={user === null ? '' : user.uid}/>
         </CardContent>
       </Card>
     </div>

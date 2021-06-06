@@ -19,6 +19,7 @@ function App() {
       if (user) {
         // User is signed in.
         console.log("onAuthStateChanged: signed in");
+        console.log("Signed in user: ", user);
         //console.log("user", user);
         history.push("/home");
 

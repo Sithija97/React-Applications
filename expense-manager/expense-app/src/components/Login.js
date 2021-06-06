@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { auth, providerGoogle } from "../firebase";
+import {
+  auth,
+  providerFacebook,
+  providerGoogle,
+  providerGithub,
+} from "../firebase";
 import { UserContext } from "../StateContext";
-import './Login.css'
+import "./Login.css";
 
 function Login() {
   const [user, setUser] = useContext(UserContext);
   const history = useHistory();
-  
+
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(providerGoogle)
@@ -19,10 +24,10 @@ function Login() {
         var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log('user: ',user);
+        console.log("google user: ", user);
         // display user
-          setUser(user);
-          history.push("/home");
+        setUser(user);
+        history.push("/home");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -34,6 +39,62 @@ function Login() {
         var credential = error.credential;
       });
   };
+
+  const signInWithFacebook = () => {
+    auth
+      .signInWithPopup(providerFacebook)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        // The signed-in user info.
+        var user = result.user;
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var accessToken = credential.accessToken;
+        console.log("fb user: ", user);
+        // display user
+        setUser(user);
+        history.push("/home");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log("errorMessage", errorMessage);
+      });
+  };
+
+  const signInWithGithub = () => {
+    auth
+      .signInWithPopup(providerGithub)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log("github user: ", user);
+        // display user
+        setUser(user);
+        history.push("/home");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log("errorMessage", errorMessage);
+      });
+  };
   return (
     <div className="login_container">
       <img
@@ -43,7 +104,7 @@ function Login() {
       />
       <div className="login">
         <div className="login__divider"></div>
-        <div className="login__loginwith">
+        <div className="login__loginwith" onClick={signInWithFacebook}>
           <span>login with facebook</span>
           <img
             src="https://image.flaticon.com/icons/png/512/145/145802.png"
@@ -57,7 +118,7 @@ function Login() {
             alt="google_icon"
           />
         </div>
-        <div className="login__loginwith">
+        <div className="login__loginwith" onClick={signInWithGithub}>
           <span>login with github</span>
           <img
             src="https://cdn1.iconfinder.com/data/icons/logotypes/32/github-512.png"
