@@ -19,19 +19,17 @@ function App() {
       if (user) {
         // User is signed in.
         console.log("onAuthStateChanged: signed in");
-        console.log("Signed in user: ", user);
+        //set current user as user
+        setUser(auth.currentUser);;
         //console.log("user", user);
         history.push("/home");
-
-        //set current user as user
-        setUser(auth.currentUser);
       } else {
         // No user is signed in.
         console.log("onAuthStateChanged: No user ");
         history.push("/login");
       }
     });
-  }, [auth, user]);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">

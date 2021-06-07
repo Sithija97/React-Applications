@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import "./SectionStyles.css";
 import { Avatar, Card, CardContent } from "@material-ui/core";
-import { UserContext } from "../../StateContext";
+import { UserContext } from "../StateContext";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import { useHistory } from "react-router-dom";
 import "./Form.css";
 import Form from "./Form";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 
 function SectionThree() {
   const [user, setUser] = useContext(UserContext);

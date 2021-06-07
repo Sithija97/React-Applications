@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SectionStyles.css";
 import { Card, CardContent } from "@material-ui/core";
 import Overview from "./Overview";
 import Transactions from "./Transactions";
+import db, { auth } from "../firebase";
 
 function SectionOne() {
   return (

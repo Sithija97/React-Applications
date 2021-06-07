@@ -6,7 +6,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import RemoveFromQueueIcon from "@material-ui/icons/RemoveFromQueue";
-import db from "../../firebase";
+import db from "../firebase";
 function Form({ id }) {
   const initialStateValues = {
     uid:null,

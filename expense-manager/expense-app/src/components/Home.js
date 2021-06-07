@@ -1,8 +1,10 @@
 import "./Home.css";
-import React from "react";
-import SectionOne from "./sub-components/SectionOne";
-import SectionTwo from "./sub-components/SectionTwo";
-import SectionThree from "./sub-components/SectionThree";
+import React, { useContext, useEffect, useState } from "react";
+import SectionOne from "./SectionOne";
+import SectionTwo from "./SectionTwo";
+import SectionThree from "./SectionThree";
+import db, { auth } from "../firebase";
+import { UserContext } from "../StateContext";
 
 function Home() {
   return (
