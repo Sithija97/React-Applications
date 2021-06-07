@@ -12,7 +12,8 @@ import { auth } from './firebase';
 import { UserContext } from './StateContext';
 
 function App() {
-  const [user, setUser] = useContext(UserContext);
+  const { value, value2 } = useContext(UserContext); 
+  const [user, setUser] = value;
   const history = useHistory();
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {

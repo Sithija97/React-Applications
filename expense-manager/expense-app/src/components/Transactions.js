@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,51 +7,70 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { UserContext } from '../StateContext';
+import db from '../firebase';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 180,
+    
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream ", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-];
 function Transactions() {
-    const classes = useStyles();
-    return (
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+  const { value, value2, value3, value4, value6 } = useContext(UserContext);
+  const [events, setEvents] = value6;
+  const [user, setUser] = value;  
+
+  const myArray = [];
+  const collectData = () => {
+    events.map(event => {
+      if (user.uid != null && event.data.uid === user.uid) {
+        myArray.push(event)
+      }
+    })
+      // setLocalData(myArray);
+    console.log('in tr:', myArray);
+  }
+
+  const setCollectedData = () => {
+    // setLocalData(myArray);
+    myArray.map(data => {
+      console.log(data.data.name);
+    })
+  };
+
+  useEffect(() => {}, [collectData(), setCollectedData()]);
+  const classes = useStyles();
+  return (
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="left">
+              <b>Name</b>
+            </TableCell>
+            <TableCell align="left">Amount</TableCell>
+            {/* <TableCell align="left">Type</TableCell> */}
+            <TableCell align="left">Category</TableCell>
+            <TableCell align="left">Date</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {myArray.map((data) => (
+            <TableRow key={data.data.id}>
+              <TableCell component="th" scope="row">
+                {data.data.name}
+              </TableCell>
+              <TableCell align="left">{data.data.amount}</TableCell>
+              {/* <TableCell align="left">{data.data.type}</TableCell> */}
+              <TableCell align="left">{data.data.category}</TableCell>
+              <TableCell align="left">{data.data.date}</TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    );
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 }
 
 export default Transactions

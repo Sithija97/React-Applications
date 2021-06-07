@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./SectionStyles.css";
 import { Avatar, Card, CardContent } from "@material-ui/core";
 import { UserContext } from "../StateContext";
@@ -6,18 +6,20 @@ import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import { useHistory } from "react-router-dom";
 import "./Form.css";
 import Form from "./Form";
-import { auth } from "../firebase";
+import db, { auth } from "../firebase";
 
 function SectionThree() {
-  const [user, setUser] = useContext(UserContext);
+  const { value, value2 } = useContext(UserContext); 
+  const [user, setUser] = value;
   const history = useHistory();
+
   const signOut = () => {
     auth
       .signOut()
       .then(() => {
         history.push("/login");
         setUser(null);
-        // Sign-out successful.      
+        // Sign-out successful.
         console.log("Sign-out successful.");
       })
       .catch((error) => {
@@ -25,6 +27,7 @@ function SectionThree() {
         console.log(" An error happened.", error);
       });
   };
+
   return (
     <div className="section_three">
       <Card className="section_three_profile_card">
@@ -50,7 +53,7 @@ function SectionThree() {
       <Card className="section_three_form_card">
         <h4 className="form_title">Add Data</h4>
         <CardContent>
-          <Form id={user === null ? '' : user.uid}/>
+          <Form id={user === null ? "" : user.uid} />
         </CardContent>
       </Card>
     </div>

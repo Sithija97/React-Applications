@@ -10,7 +10,8 @@ import { UserContext } from "../StateContext";
 import "./Login.css";
 
 function Login() {
-  const [user, setUser] = useContext(UserContext);
+  const { value, value2 } = useContext(UserContext); 
+  const [user, setUser] = value;
   const history = useHistory();
 
   const signInWithGoogle = () => {
