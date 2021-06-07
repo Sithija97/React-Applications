@@ -15,9 +15,9 @@ function SectionThree() {
     auth
       .signOut()
       .then(() => {
-        setUser(null);
-        // Sign-out successful.
         history.push("/login");
+        setUser(null);
+        // Sign-out successful.      
         console.log("Sign-out successful.");
       })
       .catch((error) => {
