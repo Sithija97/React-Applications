@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./SectionStyles.css";
-import { Avatar, Card, CardContent } from "@material-ui/core";
+import { Avatar, Card, CardContent, Grid } from "@material-ui/core";
 import { UserContext } from "../StateContext";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import { useHistory } from "react-router-dom";
@@ -43,10 +43,21 @@ function SectionThree() {
             <br></br>
             {user === null ? " " : user.email}
           </div>
-          <ExitToAppRoundedIcon
-            className="logout_button"
+          {/* <br /> */}
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            className="logout_button "
             onClick={signOut}
-          ></ExitToAppRoundedIcon>
+          >
+            <Grid item>
+              <b>log out </b>
+            </Grid>
+            <Grid item>
+              <ExitToAppRoundedIcon></ExitToAppRoundedIcon>
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
       <br></br>

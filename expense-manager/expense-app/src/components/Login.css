@@ -17,8 +17,8 @@
 }
 
 .login {
-  width: 400px;
-  min-height: 300px;
+  width: 300px;
+  min-height: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

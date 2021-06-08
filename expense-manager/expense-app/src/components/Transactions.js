@@ -42,33 +42,35 @@ function Transactions() {
   useEffect(() => {}, [collectData(), setCollectedData()]);
   const classes = useStyles();
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">
-              <b>Name</b>
-            </TableCell>
-            <TableCell align="left">Amount</TableCell>
-            {/* <TableCell align="left">Type</TableCell> */}
-            <TableCell align="left">Category</TableCell>
-            <TableCell align="left">Date</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {myArray.map((data) => (
-            <TableRow key={data.data.id}>
-              <TableCell component="th" scope="row">
-                {data.data.name}
+    <TableContainer style={{ height: 300 }}>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">
+                <b>Name</b>
               </TableCell>
-              <TableCell align="left">{data.data.amount}</TableCell>
-              {/* <TableCell align="left">{data.data.type}</TableCell> */}
-              <TableCell align="left">{data.data.category}</TableCell>
-              <TableCell align="left">{data.data.date}</TableCell>
+              <TableCell align="left">Amount</TableCell>
+              {/* <TableCell align="left">Type</TableCell> */}
+              <TableCell align="left">Category</TableCell>
+              <TableCell align="left">Date</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {myArray.map((data) => (
+              <TableRow key={data.data.id}>
+                <TableCell component="th" scope="row">
+                  {data.data.name}
+                </TableCell>
+                <TableCell align="left">{data.data.amount}</TableCell>
+                {/* <TableCell align="left">{data.data.type}</TableCell> */}
+                <TableCell align="left">{data.data.category}</TableCell>
+                <TableCell align="left">{data.data.date}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </TableContainer>
   );
 }

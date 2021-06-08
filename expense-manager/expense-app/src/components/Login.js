@@ -10,8 +10,9 @@ import { UserContext } from "../StateContext";
 import "./Login.css";
 
 function Login() {
-  const { value, value2 } = useContext(UserContext); 
+  const { value, value5 } = useContext(UserContext); 
   const [user, setUser] = value;
+  const [isLoggedIn, setIsLoggedIn] = value5;
   const history = useHistory();
 
   const signInWithGoogle = () => {
@@ -29,6 +30,7 @@ function Login() {
         // display user
         setUser(user);
         history.push("/home");
+        setIsLoggedIn(true)
       })
       .catch((error) => {
         // Handle Errors here.
@@ -56,6 +58,7 @@ function Login() {
         // display user
         setUser(user);
         history.push("/home");
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -84,6 +87,7 @@ function Login() {
         // display user
         setUser(user);
         history.push("/home");
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         // Handle Errors here.

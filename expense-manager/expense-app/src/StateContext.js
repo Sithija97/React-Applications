@@ -6,7 +6,7 @@ const UserProvider = (props) => {
   const [userIncome, setUserIncome] = useState(0);
   const [userExpense, setUserExpense] = useState(0);
   const [userSaving, setUserSaving] = useState(0);
-  // const [userEvents, setUserEvents] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [events, setEvents] = useState([]);
   return (
     <UserContext.Provider
@@ -15,7 +15,7 @@ const UserProvider = (props) => {
         value2: [userIncome, setUserIncome],
         value3: [userExpense, setUserExpense],
         value4: [userSaving, setUserSaving],
-        // value5: [userEvents, setUserEvents],
+        value5: [isLoggedIn, setIsLoggedIn],
         value6: [events, setEvents],
       }}
     >
