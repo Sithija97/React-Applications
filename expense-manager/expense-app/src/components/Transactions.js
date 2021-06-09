@@ -28,18 +28,17 @@ function Transactions() {
         myArray.push(event)
       }
     })
-      // setLocalData(myArray);
     console.log('in tr:', myArray);
   }
 
-  const setCollectedData = () => {
-    // setLocalData(myArray);
-    myArray.map(data => {
-      console.log(data.data.name);
-    })
-  };
+  // const setCollectedData = () => {
+  //   // setLocalData(myArray);
+  //   myArray.map(data => {
+  //     console.log(data.data.name);
+  //   })
+  // };
 
-  useEffect(() => {}, [collectData(), setCollectedData()]);
+  useEffect(() => {}, [collectData()]);
   const classes = useStyles();
   return (
     <TableContainer style={{ height: 300 }}>

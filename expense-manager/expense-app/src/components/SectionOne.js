@@ -12,12 +12,10 @@ function SectionOne() {
   const [userIncome, setUserIncome] = value2;
   const [userExpense, setUserExpense] = value3;
   const [userSaving, setUserSaving] = value4;
-  const [events, setEvents] = value6
+  const [events, setEvents] = value6;
 
-  let sumIncome,
-    sumExpense,
-    sumSavings;
-    
+  let sumIncome, sumExpense, sumSavings;
+
   sumIncome = sumExpense = sumSavings = 0;
   const filterData = () => {
     console.log(events);
@@ -39,7 +37,7 @@ function SectionOne() {
     // setting data for context
     setUserIncome(sumIncome);
     setUserExpense(sumExpense);
-    setUserSaving(sumSavings)
+    setUserSaving(sumSavings);
   };
 
   useEffect(() => {

@@ -22,10 +22,11 @@ function App() {
       if (user) {
         // User is signed in.
         console.log("onAuthStateChanged: signed in");
-        //set current user as user
-        setUser(auth.currentUser);
-        //console.log("user", user);
         history.push("/home");
+        // set current user as user
+        // setUser(auth.currentUser);
+        //console.log("user", user);
+
       } else {
         // No user is signed in.
         console.log("onAuthStateChanged: No user ");

@@ -10,7 +10,7 @@ import { UserContext } from "../StateContext";
 import "./Login.css";
 
 function Login() {
-  const { value, value5 } = useContext(UserContext); 
+  const { value, value5 } = useContext(UserContext);
   const [user, setUser] = value;
   const [isLoggedIn, setIsLoggedIn] = value5;
   const history = useHistory();
@@ -29,8 +29,8 @@ function Login() {
         console.log("google user: ", user);
         // display user
         setUser(user);
+        setIsLoggedIn(true);
         history.push("/home");
-        setIsLoggedIn(true)
       })
       .catch((error) => {
         // Handle Errors here.
@@ -57,8 +57,8 @@ function Login() {
         console.log("fb user: ", user);
         // display user
         setUser(user);
-        history.push("/home");
         setIsLoggedIn(true);
+        history.push("/home");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -86,8 +86,8 @@ function Login() {
         console.log("github user: ", user);
         // display user
         setUser(user);
-        history.push("/home");
         setIsLoggedIn(true);
+        history.push("/home");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -102,11 +102,11 @@ function Login() {
   };
   return (
     <div className="login_container">
-      <img
+      {/* <img
         className="login_img"
         src="https://image.freepik.com/free-vector/family-budget-planning-abstract-concept-vector-illustration-best-economic-decisions-personal-budget-strategy-family-income-expenses-management-financial-household-plan-abstract-metaphor_335657-4162.jpg"
         alt=""
-      />
+      /> */}
       <div className="login">
         <div className="login__divider"></div>
         <div className="login__loginwith" onClick={signInWithFacebook}>
