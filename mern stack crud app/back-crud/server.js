@@ -13,7 +13,8 @@ mongoose
   .connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true })
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("DB connceted successfully");
   })
@@ -21,6 +22,12 @@ mongoose
     console.log("err: " + err);
   });
 
-  app.listen(5000, () => {
-    console.log("Server connected to port 5000");
-  });
+const exercisesRouter = require("./routes/exercise");
+const usersRouter = require("./routes/user");
+
+app.use("/exercises", exercisesRouter);
+app.use("/users", usersRouter);
+
+app.listen(5000, () => {
+  console.log("Server connected to port 5000");
+});
