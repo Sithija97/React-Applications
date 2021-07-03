@@ -8,6 +8,6 @@ switch (action.type) {
     break;
 
   default:
-    break;
+    return state;
 }
 }
