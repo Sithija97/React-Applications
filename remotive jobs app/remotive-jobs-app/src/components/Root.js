@@ -9,22 +9,23 @@ function Root() {
   };
 
   const [state, setState] = useState(initialState);
-  const myArr = [];
-  useEffect(async () => {
+
+  const fetchData = async () => {
     await axios
       .get("https://remotive.io/api/remote-jobs?category=software-dev")
       .then(
         (response) =>
           setState({
             data: response.data.jobs,
-          })
-        // console.log(state.data)
+            loading: false,
+          }),
+        console.log(state.loading)
       )
       .catch((error) => console.log(error));
-    state.data.map((docs) => {
-      console.log(docs.title)
-    });
-  }, []);
+
+  };
+
+  useEffect(() => {}, [fetchData()]);
 
   return (
     <div>
