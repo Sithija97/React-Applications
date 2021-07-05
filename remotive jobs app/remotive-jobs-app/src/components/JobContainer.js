@@ -1,11 +1,18 @@
-import React from 'react'
-
-function JobContainer({name}) {
-    return (
-        <div>
-            <p>📱 </p>
-        </div>
-    )
+import React from 'react';
+function JobContainer({ name }) {
+  return (
+    <>
+      {/* location 
+                company
+                title
+                job type
+                salary
+                description
+                published date
+                url
+            */}
+    </>
+  );
 }
 
-export default JobContainer
+export default JobContainer;
