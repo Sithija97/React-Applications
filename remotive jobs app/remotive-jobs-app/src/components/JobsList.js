@@ -1,14 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import JobContainer from "./JobContainer";
+import Spinner from "react-bootstrap/Spinner";
 import { makeStyles, Divider, Box } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
-
+import JobContainer from "./JobContainer";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       marginTop: theme.spacing(2),
+    },
+    cardGrid: {
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
     },
   },
 }));
@@ -65,15 +73,21 @@ function JobsList() {
       </div>
       <Divider />
       {state.loading ? (
-        <CircularProgress />
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       ) : (
-        <div>
-          {state.data
-            .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-            .map((docs) => (
-              <h5>{docs.title}</h5>
-            ))}
-        </div>
+        <Container className={classes.cardGrid} maxWidth="lg">
+          <Grid container spacing={2}>
+            {state.data
+              .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+              .map((docs) => (
+                <Grid item key={docs.id} xs={3}>
+                  <JobContainer title={docs.title} />
+                </Grid>
+              ))}
+          </Grid>
+        </Container>
       )}
     </>
   );
