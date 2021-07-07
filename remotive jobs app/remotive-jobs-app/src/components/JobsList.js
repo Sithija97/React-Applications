@@ -55,7 +55,7 @@ function JobsList() {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <button>press</button>
+        {/* <button>press</button> */}
         <Pagination
           count={noOfPages}
           page={page}

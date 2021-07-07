@@ -50,9 +50,9 @@ function JobContainer({ title, description }) {
           <Typography></Typography>
         </CardContent>
         <div className={classes.chip}>
-          <Chip size="small" label="Clickable" onClick={console.log("hello")} />
-          <Chip size="small" label="Clickable" onClick={console.log("hello")} />
-          <Chip size="small" label="Clickable" onClick={console.log("hello")} />
+          <Chip size="small" label="Clickable" />
+          <Chip size="small" label="Clickable" />
+          <Chip size="small" label="Clickable" />
         </div>
         <CardActions>
           <Button size="small" color="primary">
