@@ -6,9 +6,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import JobContainer from "./JobContainer";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
+import PersonIcon from "@material-ui/icons/Person";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -83,7 +81,9 @@ function JobsList() {
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
               .map((docs) => (
                 <Grid item key={docs.id} xs={3}>
-                  <JobContainer title={docs.title} />
+                  <JobContainer
+                    title={docs.title}
+                  />
                 </Grid>
               ))}
           </Grid>
