@@ -8,11 +8,11 @@ import { Route, Switch, Redirect } from "react-router-dom";
 function App() {
   return (
     <>
-      {/* <Navigater /> */}
+      <DrawerLeft />
       <Switch>
-        <Route path="/home" exact component={DrawerLeft} />
+        <Route path="/home" exact component={Home} />
         <Route path="/profile" exact component={Profile} />
-        <Redirect from="/" to="home" exact component={DrawerLeft} />
+        <Redirect from="/" to="home" exact component={Home} />
       </Switch>
     </>
   );

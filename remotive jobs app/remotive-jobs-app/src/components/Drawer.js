@@ -233,19 +233,20 @@ export default function DrawerLeft() {
                 color="inherit"
                 href="/profile"
               >
-                <AccountCircle/>
+                <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
-              {/* <IconButton
+              <IconButton
                 aria-label="show more"
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
+                // onClick={handleMobileMenuOpen}
                 color="inherit"
+                href="/home"
               >
-                <MoreIcon />
-              </IconButton> */}
+                <HomeIcon />
+              </IconButton>
             </div>
           </Toolbar>
         </AppBar>
@@ -301,7 +302,7 @@ export default function DrawerLeft() {
           })}
         >
           {/* <div className={classes.drawerHeader} /> */}
-          <JobsList />
+          {/* <JobsList /> */}
         </main>
       </div>
     </>
