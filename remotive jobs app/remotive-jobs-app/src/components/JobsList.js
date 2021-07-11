@@ -6,11 +6,11 @@ import Pagination from "@material-ui/lab/Pagination";
 import JobContainer from "./JobContainer";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import PersonIcon from "@material-ui/icons/Person";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(6),
     },
     cardGrid: {
       paddingTop: theme.spacing(8),
@@ -55,7 +55,7 @@ function JobsList() {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <button>press</button>
+        {/* <button>press</button> */}
         <Pagination
           count={noOfPages}
           page={page}
@@ -71,9 +71,9 @@ function JobsList() {
       </div>
       <Divider />
       {state.loading ? (
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <div className={classes.root}>
+          <CircularProgress />
+        </div>
       ) : (
         <Container className={classes.cardGrid} maxWidth="lg">
           <Grid container spacing={2}>
@@ -81,9 +81,7 @@ function JobsList() {
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
               .map((docs) => (
                 <Grid item key={docs.id} xs={3}>
-                  <JobContainer
-                    title={docs.title}
-                  />
+                  <JobContainer title={docs.title} />
                 </Grid>
               ))}
           </Grid>
