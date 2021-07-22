@@ -26,6 +26,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Link from "@material-ui/core/Link";
 
+import Profile from "./Profile";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -302,7 +303,8 @@ export default function DrawerLeft() {
           })}
         >
           {/* <div className={classes.drawerHeader} /> */}
-          {/* <JobsList /> */}
+          {/* <JobsList />
+          <Profile /> */}
         </main>
       </div>
     </>

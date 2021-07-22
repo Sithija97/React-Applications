@@ -81,7 +81,13 @@ function JobsList() {
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
               .map((docs) => (
                 <Grid item key={docs.id} xs={3}>
-                  <JobContainer title={docs.title} />
+                  <JobContainer
+                    title={docs.title}
+                    company={docs.company_name}
+                    location={docs.candidate_required_location}
+                    type={docs.job_type}
+                    salary={docs.salary}
+                  />
                 </Grid>
               ))}
           </Grid>
