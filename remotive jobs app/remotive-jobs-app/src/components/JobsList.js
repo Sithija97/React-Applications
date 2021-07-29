@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Spinner from "react-bootstrap/Spinner";
 import { makeStyles, Divider, Box } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import JobContainer from "./JobContainer";
@@ -72,7 +71,7 @@ function JobsList() {
       <Divider />
       {state.loading ? (
         <div className={classes.root}>
-          <CircularProgress />
+          <h3>Loading...</h3>
         </div>
       ) : (
         <Container className={classes.cardGrid} maxWidth="lg">
