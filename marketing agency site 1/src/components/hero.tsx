@@ -3,8 +3,8 @@ import heroImg from "../assets/hero.svg";
 export const Hero = () => {
   return (
     <div className="h-full pt-[84px] pb-[122px] pl-[121px] pr-[120.89px]">
-      <div className="grid gap-5 lg:grid-cols-2 lg:gap-0 ">
-        <div className="lg:order-first flex items-center justify-start ">
+      <div className="grid gap-5 xl:grid-cols-2">
+        <div className="xl:order-first flex items-center justify-start ">
           <div className="h-[464px] w-[518.11px] bg-white flex flex-col justify-between">
             <div className="h-[356px] flex flex-col justify-between">
               <p className="font-bold text-[96px] leading-[98.5px]">
